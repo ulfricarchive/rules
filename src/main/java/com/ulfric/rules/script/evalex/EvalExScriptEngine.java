@@ -48,7 +48,15 @@ public class EvalExScriptEngine implements ScriptEngine {
 	}
 
 	private EvalExScript createScript(String script, Set<Variable> variablesInScript) {
+		script = script.replace("!", "0 !");
 		Expression expression = new Expression(script);
+		expression.addOperator(expression.new Operator("!", 0, true) {
+			@Override
+			public BigDecimal eval(BigDecimal ignore, BigDecimal bool) {
+				return BigDecimal.ZERO.compareTo(bool) == 0 ? BigDecimal.ONE : BigDecimal.ZERO;
+			}
+		});
+
 		Context context = new Context();
 
 		for (Variable variable : variablesInScript) {

@@ -1,5 +1,7 @@
 package com.ulfric.rules;
 
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
+
 import com.ulfric.rules.script.ScriptEngine;
 import com.ulfric.rules.script.StandardScriptEngineFactories;
 import com.ulfric.rules.security.SecurityScanner;
@@ -9,8 +11,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class RuleEngine {
+
+	private static final Pattern SEMANTICS = Pattern.compile("(?i)([\\s])?(AND|OR|NOT)([\\s])?");
+	private static final Map<String, String> SEMANTIC_TO_OPERATOR = new CaseInsensitiveMap<>();
+
+	static {
+		SEMANTIC_TO_OPERATOR.put("NOT", "!");
+		SEMANTIC_TO_OPERATOR.put("OR", "||");
+		SEMANTIC_TO_OPERATOR.put("AND", "&&");
+	}
 
 	private final ScriptEngine engine;
 	private final Map<String, Variable> variables = new HashMap<>();
@@ -35,9 +48,12 @@ public final class RuleEngine {
 	}
 
 	private String replaceSemantics(String script) {
-		return script
-				.replace(" AND ", " && ")
-				.replace(" OR ", " || ");
+		String formatted = script;
+		Matcher matcher = SEMANTICS.matcher(script);
+		while (matcher.find()) {
+			formatted = matcher.replaceFirst("$1" + SEMANTIC_TO_OPERATOR.get(matcher.group(2)) + "$3");
+		}
+		return formatted;
 	}
 
 	private void enforceSecurityScanners(String rule, String script) {

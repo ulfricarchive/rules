@@ -66,4 +66,16 @@ class RuleEngineTest {
 		Veracity.assertThat(() -> engine.compile(":x:").test(null)).runsWithoutExceptions();
 	}
 
+	@Test
+	void testNotSemanticTrue() {
+		engine.addVariable(new X("true"));
+		Truth.assertThat(engine.compile("NOT :x:").test(null)).isEqualTo(Result.FAILED);
+	}
+
+	@Test
+	void testNotSemanticFalse() {
+		engine.addVariable(new X("false"));
+		Truth.assertThat(engine.compile("NOT :x:").test(null)).isEqualTo(Result.PASSED);
+	}
+
 }
