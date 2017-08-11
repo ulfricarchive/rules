@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
 import com.google.common.truth.Truth;
@@ -24,7 +24,7 @@ class RuleTest {
 	@BeforeEach
 	void setup() throws Exception {
 		script = Mockito.mock(Script.class);
-		Mockito.when(script.apply(Matchers.any())).thenReturn(true);
+		Mockito.when(script.apply(ArgumentMatchers.any())).thenReturn(true);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ class RuleTest {
 	@Test
 	void testRuleReturnsResult() {
 		Object expected = Result.PASSED;
-		Mockito.when(script.apply(Matchers.any())).thenReturn(expected);
+		Mockito.when(script.apply(ArgumentMatchers.any())).thenReturn(expected);
 		Rule rule = new Rule("true", script);
 		Truth.assertThat(rule.test(null)).isSameAs(expected);
 	}
@@ -60,35 +60,35 @@ class RuleTest {
 
 	@Test
 	void testRuleReturnsFalse() {
-		Mockito.when(script.apply(Matchers.any())).thenReturn(false);
+		Mockito.when(script.apply(ArgumentMatchers.any())).thenReturn(false);
 		Rule rule = new Rule("true", script);
 		Truth.assertThat(rule.test(null)).isSameAs(Result.FAILED);
 	}
 
 	@Test
 	void testRuleReturnsBigDecimalZero() {
-		Mockito.when(script.apply(Matchers.any())).thenReturn(BigDecimal.ONE);
+		Mockito.when(script.apply(ArgumentMatchers.any())).thenReturn(BigDecimal.ONE);
 		Rule rule = new Rule("true", script);
 		Truth.assertThat(rule.test(null)).isSameAs(Result.PASSED);
 	}
 
 	@Test
 	void testRuleReturnsBigDecimalOne() {
-		Mockito.when(script.apply(Matchers.any())).thenReturn(BigDecimal.ZERO);
+		Mockito.when(script.apply(ArgumentMatchers.any())).thenReturn(BigDecimal.ZERO);
 		Rule rule = new Rule("true", script);
 		Truth.assertThat(rule.test(null)).isSameAs(Result.FAILED);
 	}
 
 	@Test
 	void testRuleReturnsNullThrowsException() {
-		Mockito.when(script.apply(Matchers.any())).thenReturn(null);
+		Mockito.when(script.apply(ArgumentMatchers.any())).thenReturn(null);
 		Rule rule = new Rule("true", script);
 		Veracity.assertThat(() -> rule.test(null)).doesThrow(IllegalStateException.class);
 	}
 
 	@Test
 	void testRuleReturnsIllegalThrowsException() {
-		Mockito.when(script.apply(Matchers.any())).thenReturn(new Object());
+		Mockito.when(script.apply(ArgumentMatchers.any())).thenReturn(new Object());
 		Rule rule = new Rule("true", script);
 		Veracity.assertThat(() -> rule.test(null)).doesThrow(IllegalStateException.class);
 	}
