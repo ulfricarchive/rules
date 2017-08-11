@@ -1,8 +1,6 @@
 package com.ulfric.rules.security;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.BooleanSubject;
 import com.google.common.truth.Truth;
@@ -11,7 +9,6 @@ import com.ulfric.dragoon.reflect.Instances;
 import com.ulfric.rules.UncompiledRule;
 import com.ulfric.veracity.Veracity;
 
-@RunWith(JUnitPlatform.class)
 class MaxLengthSecurityScannerTest {
 
 	@Test

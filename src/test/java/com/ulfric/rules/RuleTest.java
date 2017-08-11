@@ -2,8 +2,6 @@ package com.ulfric.rules;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
@@ -16,7 +14,6 @@ import com.ulfric.veracity.Veracity;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@RunWith(JUnitPlatform.class)
 class RuleTest {
 
 	private Script script;

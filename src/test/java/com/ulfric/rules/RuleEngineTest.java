@@ -2,8 +2,6 @@ package com.ulfric.rules;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth;
 
@@ -12,7 +10,6 @@ import com.ulfric.rules.security.SecurityScanner;
 import com.ulfric.rules.suite.X;
 import com.ulfric.veracity.Veracity;
 
-@RunWith(JUnitPlatform.class)
 class RuleEngineTest {
 
 	private RuleEngine engine;

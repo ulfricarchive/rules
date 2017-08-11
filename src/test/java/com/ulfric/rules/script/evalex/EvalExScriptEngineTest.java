@@ -1,8 +1,6 @@
 package com.ulfric.rules.script.evalex;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth;
 
@@ -11,7 +9,6 @@ import com.ulfric.veracity.Veracity;
 
 import java.math.BigDecimal;
 
-@RunWith(JUnitPlatform.class)
 class EvalExScriptEngineTest {
 
 	@Test

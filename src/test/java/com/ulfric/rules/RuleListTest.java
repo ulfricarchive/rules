@@ -2,8 +2,6 @@ package com.ulfric.rules;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import com.google.common.truth.Truth;
@@ -12,7 +10,6 @@ import com.ulfric.rules.consequence.Consequence;
 import com.ulfric.rules.script.Script;
 import com.ulfric.veracity.Veracity;
 
-@RunWith(JUnitPlatform.class)
 class RuleListTest {
 
 	private RuleList rules;

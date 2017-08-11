@@ -1,8 +1,6 @@
 package com.ulfric.rules.script.evalex;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -16,7 +14,6 @@ import com.ulfric.veracity.Veracity;
 
 import java.math.BigDecimal;
 
-@RunWith(JUnitPlatform.class)
 class EvalExScriptTest {
 
 	@Test

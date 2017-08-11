@@ -3,6 +3,7 @@ package com.ulfric.rules.script.evalex;
 import com.udojava.evalex.Expression;
 import com.udojava.evalex.Expression.LazyNumber;
 
+import com.ulfric.commons.text.RegexHelper;
 import com.ulfric.rules.Variable;
 import com.ulfric.rules.script.Script;
 import com.ulfric.rules.script.ScriptEngine;
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
 
 public class EvalExScriptEngine implements ScriptEngine {
 
-	private static final Pattern VARIABLE = Pattern.compile("[:][a-zA-Z0-9_]+[:]");
+	private static final Pattern VARIABLE = RegexHelper.compile("[:][a-zA-Z0-9_]+[:]");
 
 	private final Map<String, Variable> variables = new HashMap<>();
 

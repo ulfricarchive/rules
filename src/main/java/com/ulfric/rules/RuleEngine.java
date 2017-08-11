@@ -2,6 +2,7 @@ package com.ulfric.rules;
 
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
+import com.ulfric.commons.text.RegexHelper;
 import com.ulfric.rules.script.ScriptEngine;
 import com.ulfric.rules.script.StandardScriptEngineFactories;
 import com.ulfric.rules.security.SecurityScanner;
@@ -16,7 +17,7 @@ import java.util.regex.Pattern;
 
 public final class RuleEngine {
 
-	private static final Pattern SEMANTICS = Pattern.compile("(?i)([\\s])?(AND|OR|NOT)([\\s])?");
+	private static final Pattern SEMANTICS = RegexHelper.compile("(?i)([\\s])?(AND|OR|NOT)([\\s])?");
 	private static final Map<String, String> SEMANTIC_TO_OPERATOR = new CaseInsensitiveMap<>();
 
 	static {
